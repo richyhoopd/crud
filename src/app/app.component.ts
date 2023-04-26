@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from 'src/interfaces/Product';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo';
+  onNewProduct( product: Product): void {
+    console.log('pagina principal');
+    console.log(product);
+  }
 }
