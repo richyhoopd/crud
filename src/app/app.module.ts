@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TablaComponent } from './tabla/tabla.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { FormComponent } from './form/form.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -12,7 +11,6 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     TablaComponent,
     SidebarComponent,
-    FormComponent
   ],
   imports: [
     BrowserModule,

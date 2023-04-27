@@ -15,12 +15,19 @@ return productos.products;
 
 }
 
-editProducts (id: number) {
-  fetch(`https://dummyjson.com/products/${id}`, {
+async getProduct(id: number) {
+ let product = await fetch(`https://dummyjson.com/products/${id}`)
+.then(res => res.json())
+return product
+
+}
+
+editProducts (product: Product) {
+  fetch(`https://dummyjson.com/products/${product.id}`, {
   method: 'PUT', /* or PATCH */
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    title: 'iPhone Galaxy +1'
+    product
   })
 })
 .then(res => res.json())
@@ -35,7 +42,7 @@ async addProduct(product: Product) {
 })
 .then(res => res.json());
 console.log(product)
-return product;
+return product ;
 }
 
 async deleteProduct(id: number) {
@@ -45,6 +52,31 @@ async deleteProduct(id: number) {
 .then(res => res.json())
 .then(console.log);
 }
+
+async buscar(q: string) {
+  const response = await fetch(`https://dummyjson.com/products/search?q=${q}`);
+  const data = await response.json();
+  console.log(data.products)
+  return data.products;
+};
+
+
+async getCategory() {
+  const response = await fetch('https://dummyjson.com/products/categories');
+  const categories = await response.json();
+  console.log(categories);
+  return categories;
+}
+
+async getOneCategory(cat: string) {
+ const repsonse = await fetch(`https://dummyjson.com/products/category/${cat}`)
+ const category = await repsonse.json();
+ console.log(category);
+ return category.products;
+
+}
+
+
 
   constructor() { }
 }
